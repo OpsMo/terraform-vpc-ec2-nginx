@@ -11,5 +11,5 @@ output "private_subnet_ids" {
 }
 
 output "nginx_instance_public_ip" {
-  value = aws_instance.nginx.public_ip
+  value = aws_instance.ec2nginx.public_ip
 }
