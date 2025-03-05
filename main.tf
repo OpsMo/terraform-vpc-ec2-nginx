@@ -72,6 +72,7 @@ resource "aws_instance" "ec2nginx" {
               yum install -y nginx
               systemctl start nginx
               systemctl enable nginx
+              echo "<h1>Welcome to Ansys Demo</h1>" > /usr/share/nginx/html/index.html
               EOF
 }
 
