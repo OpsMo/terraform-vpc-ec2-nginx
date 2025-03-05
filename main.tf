@@ -11,8 +11,7 @@ resource "aws_subnet" "public" {
   count      = length(var.availability_zones)
   cidr_block       = cidrsubnet(aws_vpc.main.cidr_block, 3, count.index)
   availability_zone = var.availability_zones[count.index]
-  map_customer_owned_ip_on_launch = true
-
+  map_public_ip_on_launch = true
 }   
 
 resource "aws_subnet" "private" {
