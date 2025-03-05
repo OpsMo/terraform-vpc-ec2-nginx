@@ -7,7 +7,7 @@ variable "availability_zones" {
 }
 
 variable "ami_id" {
-  default = ""
+  default = "ami-05b10e08d247fb927"
 }
 
 variable "instance_type" {
