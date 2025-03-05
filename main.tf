@@ -56,5 +56,22 @@ resource "aws_security_group" "http_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-
 }
+resource "aws_instance" "ec2nginx" {
+  ami           = var.ami_id
+  tags = {
+    Name = "nginx"
+  }
+  instance_type = var.instance_type
+  subnet_id     = aws_subnet.public[0].id
+  security_groups = [aws_security_group.http_sg.id]
+
+  user_data = <<-EOF
+              #!/bin/bash
+              yum update -y
+              yum install -y nginx
+              systemctl start nginx
+              systemctl enable nginx
+              EOF
+}
+
